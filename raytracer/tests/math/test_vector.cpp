@@ -1,5 +1,6 @@
 #include "math/vector.h"
 
+#include <catch2/catch_approx.hpp>
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("vectors can be added") {
@@ -65,4 +66,14 @@ TEST_CASE("vectors can be normalised") {
     REQUIRE(result.x() == 0);
     REQUIRE(result.y() == 0);
     REQUIRE(result.z() == 1);
+}
+
+TEST_CASE("a vector can be normalised in any direction") {
+    const Vector vector(3, 4, 0);
+
+    const Vector result = vector.normalised();
+
+    REQUIRE(result.x() == Catch::Approx(3.0 / 5.0));
+    REQUIRE(result.y() == Catch::Approx(4.0 / 5.0));
+    REQUIRE(result.z() == 0);
 }

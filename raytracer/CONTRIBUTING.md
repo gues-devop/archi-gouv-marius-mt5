@@ -17,7 +17,8 @@ and GNU Make. It does not configure or build the project automatically; run
 ### Native setup
 
 Install CMake 3.21 or newer, GNU Make, Git, and a C++20 compiler. The first
-configuration downloads Catch2, so it requires an internet connection.
+configuration fetches LodePNG (and Catch2 when tests are enabled), so it
+requires an internet connection.
 
 ## Build, run, and test
 

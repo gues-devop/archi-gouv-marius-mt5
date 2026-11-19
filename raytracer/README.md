@@ -12,8 +12,8 @@ Linux-based development environment.
   - Windows: Visual Studio 2022 (Desktop development with C++)
   - macOS: Xcode Command Line Tools
   - Linux: GCC or Clang
-- Git, and an internet connection the first time CMake configures the project
-  (Catch2 is downloaded and built by CMake)
+- Git and an internet connection the first time CMake configures the project
+  (LodePNG is fetched; Catch2 is also fetched and built when testing is enabled)
 
 ## Build, run, and test
 
@@ -26,11 +26,17 @@ make run
 make test
 ```
 
+`make run` renders a 512x512 image with a red sphere and a gray plane, and
+writes it to `output.png` in the project root.
+
 Clean the generated build directory:
 
 ```sh
 make clean
 ```
+
+PNG output uses LodePNG, fetched from a pinned commit via CMake FetchContent.
+Colour components are clamped to the range 0 to 1 and converted to 8-bit RGB.
 
 The test framework is Catch2 3, fetched and pinned to v3.8.1 via CMake
 FetchContent. Tests are enabled by default. To configure without building the
